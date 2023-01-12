@@ -9,6 +9,16 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      
+      - uses: actions/checkout@v3
+      - run: | 
+          mkdir -p path/to/artifact
+          echo "
+          \"repo_id\":\"${{ github.repository_id }}"\,
+          \"repo_name\":\"${{ github.repository }}"\
+          " > path/to/artifact/metadata.json
+
+          cat path/to/artifact/metadata.json
 
       - name: Run Super-Linter
         uses: github/super-linter@v3
