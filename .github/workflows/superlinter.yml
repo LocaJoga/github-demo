@@ -7,17 +7,16 @@ jobs:
     name: Lint code base
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Create metadata.json
+        uses: actions/checkout@v3
       
-      - uses: actions/checkout@v3
       - run: | 
           mkdir -p path/to/artifact
           ls
-          echo "{
-          \"repo_id\":\"${{ github.repository_id }}"\,
-          \"repo_name\":\"${{ github.repository }}"\
-          }" > path/to/artifact/metadata.json
+          echo "
+          \"repo_id\":\"${{ github.repository_id }}\",
+          \"repo_name\":\"${{ github.repository }}\"
+          " > path/to/artifact/metadata.json
 
           cat path/to/artifact/metadata.json
 
