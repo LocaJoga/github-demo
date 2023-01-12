@@ -13,10 +13,11 @@ jobs:
       - uses: actions/checkout@v3
       - run: | 
           mkdir -p path/to/artifact
-          echo "
+          ls
+          echo "{
           \"repo_id\":\"${{ github.repository_id }}"\,
           \"repo_name\":\"${{ github.repository }}"\
-          " > path/to/artifact/metadata.json
+          }" > path/to/artifact/metadata.json
 
           cat path/to/artifact/metadata.json
 
